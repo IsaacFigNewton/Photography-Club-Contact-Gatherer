@@ -32,6 +32,7 @@ namespace First_Webcrawler
             this.buttonLocateContacts = new System.Windows.Forms.Button();
             this.buttonReadSites = new System.Windows.Forms.Button();
             this.tabPageScraping = new System.Windows.Forms.TabPage();
+            this.buttonScrapeGoogle = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -69,6 +70,8 @@ namespace First_Webcrawler
             this.buttonGetURLs = new System.Windows.Forms.Button();
             this.labelInfoToGather = new System.Windows.Forms.Label();
             this.title1 = new System.Windows.Forms.Label();
+            this.KeywordsToScrape = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.pageControl.SuspendLayout();
             this.pageMain.SuspendLayout();
             this.tabControlGatherMethod.SuspendLayout();
@@ -232,6 +235,9 @@ namespace First_Webcrawler
             // tabPageScraping
             // 
             this.tabPageScraping.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageScraping.Controls.Add(this.label10);
+            this.tabPageScraping.Controls.Add(this.KeywordsToScrape);
+            this.tabPageScraping.Controls.Add(this.buttonScrapeGoogle);
             this.tabPageScraping.Controls.Add(this.checkBox1);
             this.tabPageScraping.Controls.Add(this.checkBox2);
             this.tabPageScraping.Controls.Add(this.checkBox4);
@@ -243,6 +249,17 @@ namespace First_Webcrawler
             this.tabPageScraping.Size = new System.Drawing.Size(551, 553);
             this.tabPageScraping.TabIndex = 1;
             this.tabPageScraping.Text = "Scraping";
+            // 
+            // buttonScrapeGoogle
+            // 
+            this.buttonScrapeGoogle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonScrapeGoogle.Location = new System.Drawing.Point(16, 167);
+            this.buttonScrapeGoogle.Name = "buttonScrapeGoogle";
+            this.buttonScrapeGoogle.Size = new System.Drawing.Size(227, 73);
+            this.buttonScrapeGoogle.TabIndex = 22;
+            this.buttonScrapeGoogle.Text = "Scrape URLs from First Page of Google";
+            this.buttonScrapeGoogle.UseVisualStyleBackColor = true;
+            this.buttonScrapeGoogle.Click += new System.EventHandler(this.button4_Click);
             // 
             // checkBox1
             // 
@@ -299,7 +316,7 @@ namespace First_Webcrawler
             // buttonScrapeURLs
             // 
             this.buttonScrapeURLs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonScrapeURLs.Location = new System.Drawing.Point(16, 249);
+            this.buttonScrapeURLs.Location = new System.Drawing.Point(16, 264);
             this.buttonScrapeURLs.Name = "buttonScrapeURLs";
             this.buttonScrapeURLs.Size = new System.Drawing.Size(227, 73);
             this.buttonScrapeURLs.TabIndex = 12;
@@ -656,6 +673,24 @@ namespace First_Webcrawler
             this.title1.TabIndex = 20;
             this.title1.Text = "Information Gathering Web Crawler";
             // 
+            // KeywordsToScrape
+            // 
+            this.KeywordsToScrape.Location = new System.Drawing.Point(249, 167);
+            this.KeywordsToScrape.Name = "KeywordsToScrape";
+            this.KeywordsToScrape.Size = new System.Drawing.Size(238, 20);
+            this.KeywordsToScrape.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(245, 123);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(257, 40);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Enter keyword selectors for thing 1,\r\nseparated by commas";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,6 +751,11 @@ namespace First_Webcrawler
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }
