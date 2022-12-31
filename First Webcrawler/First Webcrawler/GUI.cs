@@ -32,6 +32,8 @@ namespace First_Webcrawler
             this.buttonLocateContacts = new System.Windows.Forms.Button();
             this.buttonReadSites = new System.Windows.Forms.Button();
             this.tabPageScraping = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.KeywordsToScrape = new System.Windows.Forms.TextBox();
             this.buttonScrapeGoogle = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -67,11 +69,10 @@ namespace First_Webcrawler
             this.button3 = new System.Windows.Forms.Button();
             this.listBoxGatherMethod = new System.Windows.Forms.ListBox();
             this.buttonWriteContacts = new System.Windows.Forms.Button();
-            this.buttonGetURLs = new System.Windows.Forms.Button();
+            this.buttonLoadURLs = new System.Windows.Forms.Button();
             this.labelInfoToGather = new System.Windows.Forms.Label();
             this.title1 = new System.Windows.Forms.Label();
-            this.KeywordsToScrape = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pageControl.SuspendLayout();
             this.pageMain.SuspendLayout();
             this.tabControlGatherMethod.SuspendLayout();
@@ -102,7 +103,7 @@ namespace First_Webcrawler
             this.pageMain.Controls.Add(this.tabControlGatherMethod);
             this.pageMain.Controls.Add(this.listBoxGatherMethod);
             this.pageMain.Controls.Add(this.buttonWriteContacts);
-            this.pageMain.Controls.Add(this.buttonGetURLs);
+            this.pageMain.Controls.Add(this.buttonLoadURLs);
             this.pageMain.Controls.Add(this.labelInfoToGather);
             this.pageMain.Controls.Add(this.title1);
             this.pageMain.Location = new System.Drawing.Point(4, 25);
@@ -249,6 +250,24 @@ namespace First_Webcrawler
             this.tabPageScraping.Size = new System.Drawing.Size(551, 553);
             this.tabPageScraping.TabIndex = 1;
             this.tabPageScraping.Text = "Scraping";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(245, 123);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(257, 40);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Enter keyword selectors for thing 1,\r\nseparated by commas";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // KeywordsToScrape
+            // 
+            this.KeywordsToScrape.Location = new System.Drawing.Point(249, 167);
+            this.KeywordsToScrape.Name = "KeywordsToScrape";
+            this.KeywordsToScrape.Size = new System.Drawing.Size(238, 20);
+            this.KeywordsToScrape.TabIndex = 23;
             // 
             // buttonScrapeGoogle
             // 
@@ -643,15 +662,15 @@ namespace First_Webcrawler
             this.buttonWriteContacts.Text = "Write  Information to Excel Sheet";
             this.buttonWriteContacts.UseVisualStyleBackColor = true;
             // 
-            // buttonGetURLs
+            // buttonLoadURLs
             // 
-            this.buttonGetURLs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGetURLs.Location = new System.Drawing.Point(12, 116);
-            this.buttonGetURLs.Name = "buttonGetURLs";
-            this.buttonGetURLs.Size = new System.Drawing.Size(227, 73);
-            this.buttonGetURLs.TabIndex = 22;
-            this.buttonGetURLs.Text = "Load Source URLs";
-            this.buttonGetURLs.UseVisualStyleBackColor = true;
+            this.buttonLoadURLs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadURLs.Location = new System.Drawing.Point(12, 131);
+            this.buttonLoadURLs.Name = "buttonLoadURLs";
+            this.buttonLoadURLs.Size = new System.Drawing.Size(227, 73);
+            this.buttonLoadURLs.TabIndex = 22;
+            this.buttonLoadURLs.Text = "Load Source URLs";
+            this.buttonLoadURLs.UseVisualStyleBackColor = true;
             // 
             // labelInfoToGather
             // 
@@ -673,23 +692,10 @@ namespace First_Webcrawler
             this.title1.TabIndex = 20;
             this.title1.Text = "Information Gathering Web Crawler";
             // 
-            // KeywordsToScrape
+            // openFileDialog1
             // 
-            this.KeywordsToScrape.Location = new System.Drawing.Point(249, 167);
-            this.KeywordsToScrape.Name = "KeywordsToScrape";
-            this.KeywordsToScrape.Size = new System.Drawing.Size(238, 20);
-            this.KeywordsToScrape.TabIndex = 23;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(245, 123);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(257, 40);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Enter keyword selectors for thing 1,\r\nseparated by commas";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.openFileDialog1.FileName = "loadWorkbookPathDialogue";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // GUI
             // 
@@ -756,6 +762,21 @@ namespace First_Webcrawler
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadWorkbookPathDialogue_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }

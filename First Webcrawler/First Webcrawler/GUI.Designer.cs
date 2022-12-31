@@ -15,10 +15,10 @@ using System.IO;
  * Agenda:
  * **************************************************************************************************************************************************
  * The code around line 720, where the parseContactWithKeywordLocation method is called, needs to parse the correct info, not necessarily the first contact info. (Maybe compile a list of possible contact info and then go through them, checking validity somehow?)
- * Fix it so that it doesn't take ~2 hours to do 20 entries
- * When the crawler reads source URLs from workbook, make it so it reads hyperlinks, then the text if a hyperlink is unavailable, see IronXL docs for help: https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Cell.html
+ * See line 482 and fix it so that it doesn't take ~2 hours to do 20 entries
+ * When the crawler reads source URLs from workbook, make it so it reads hyperlinks, then the text of a hyperlink is unavailable, see IronXL docs for help: https://ironsoftware.com/csharp/excel/object-reference/api/IronXL.Cell.html
  * Step 3 gives the URL indices of url's instead of row numbers and step 3 needs to stop after reading to the number of entries
- * Integrate the GUI
+ * Integrate the UI
  * Refactor code to convert CONTACTS_PAGE_SEARCH_KEYWORDS to 2D ArrayLists or the C# analog
  * Refactor code to give checkBoxIsChecked and contactInfo dynamic lengths (modifiable by GUI events, such as changing gathering method)
  * Find a valid alternative to the methods dealing with scraping Google and Facebook other than using their APIs (which cost $)
@@ -55,7 +55,7 @@ namespace First_Webcrawler
         //File path vars
         public static String SHEET_NAME = "Sheet1";
         public static String NAME_OF_IO_DOC = "Hyperlink to URL to Info.xlsx";
-        public static String PATH_OF_IO_DOC = "..\\" + NAME_OF_IO_DOC;
+        public static String PATH_OF_IO_DOC = "..//" + NAME_OF_IO_DOC;
 
 
 
@@ -137,10 +137,12 @@ namespace First_Webcrawler
             checkBoxPhone.CheckedChanged += new EventHandler(this.checkBoxPhone_CheckedChanged);
             checkBoxAddress.CheckedChanged += new EventHandler(this.checkBoxAddress_CheckedChanged);
             checkBoxOther.CheckedChanged += new EventHandler(this.checkBoxOther_CheckedChanged);
-            buttonGetURLs.Click += new EventHandler(this.buttonGetURLs_Click);
+            buttonLoadURLs.Click += new EventHandler(this.buttonGetURLs_Click);
             buttonLocateContacts.Click += new EventHandler(this.buttonLocateContacts_Click);
             buttonReadSites.Click += new EventHandler(this.buttonReadSites_Click);
             buttonWriteContacts.Click += new EventHandler(this.buttonWriteContacts_Click);
+            //add way for people to open workbook without having to edit the code
+            //PATH_OF_IO_DOC = this.openFileDialog1.
         }
 
         /// <summary>
@@ -479,11 +481,15 @@ namespace First_Webcrawler
                         //if the scraped contact page URL doesn't have the keyword "contact" in it
                         if (contactURLs[URLIndex].ToLower().LastIndexOf("contact") < 0)
                         {
+                            //instead of brute-forcing things, try visiting the robots.txt page or the sitemap.xml page if available, otherwise, give up, don't let it take 20 minutes/entry
+
                             //try the brute force method, stopping when it reaches the list entry after the last version of the "contact" keyword
                             String bruteForcedURL = tryBruteForce(URLs[URLIndex], 2);
                             //if the brute force method returns a url that contains the keyword, use that as the contact page url
                             if (bruteForcedURL.ToLower().LastIndexOf("contact") > 0)
                                 contactURLs[URLIndex] = bruteForcedURL;
+
+
                             //otherwise leave it as is and accept that you can't get 'em all right
                         }
 
@@ -1316,7 +1322,7 @@ namespace First_Webcrawler
         private Label label3;
         private ListBox listBoxGatherMethod;
         private Button buttonWriteContacts;
-        private Button buttonGetURLs;
+        private Button buttonLoadURLs;
         private Label labelInfoToGather;
         private Label title1;
         private Button buttonCustomBack;
@@ -1338,7 +1344,7 @@ namespace First_Webcrawler
         private Button buttonScrapeGoogle;
         private Label label10;
         private TextBox KeywordsToScrape;
-
+        private OpenFileDialog openFileDialog1;
     }
 }
 
