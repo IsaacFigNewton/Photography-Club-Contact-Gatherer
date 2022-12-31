@@ -55,7 +55,7 @@ namespace First_Webcrawler
         //File path vars
         public static String SHEET_NAME = "Sheet1";
         public static String NAME_OF_IO_DOC = "Hyperlink to URL to Info.xlsx";
-        public static String PATH_OF_IO_DOC = "C:\\Users\\Owner\\Desktop\\Use to Improve Webcrawler\\" + NAME_OF_IO_DOC; //
+        public static String PATH_OF_IO_DOC = "..\\" + NAME_OF_IO_DOC;
 
 
 
